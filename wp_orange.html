@@ -114,9 +114,9 @@ document.getElementById('logo-img').src = 'https://app.phil-mobile.be/logo.png';
 
 const productList = {
   internet: [
-    { id:'inet_start', name:'Internet Start', price:49, max:2 },
-    { id:'inet_zen',   name:'Internet Zen',   price:58, max:2 },
-    { id:'inet_giga',  name:'Internet Giga',  price:68, max:2 },
+    { id:'inet_start', name:'Internet Start', sub:'Vitesse jusqu\'à 200MB', price:49, max:2 },
+    { id:'inet_zen',   name:'Internet Zen',   sub:'Vitesse jusqu\'à 500MB', price:58, max:2 },
+    { id:'inet_giga',  name:'Internet Giga',  sub:'Vitesse jusqu\'à 1000MB', price:68, max:2 },
     { id:'inet_fixe',  name:'Ligne Fixe',     sub:'Téléphone fixe', price:12, max:2 },
   ],
   tv: [
@@ -139,20 +139,20 @@ const productList = {
 };
 
 const options = [
-  { id:'opt_install_m', name:"Frais d'installation mensuel", sub:'Frais mensuel',  price:39 },
-  { id:'opt_raccord',   name:'Frais de raccord',             sub:'Frais unique',   price:99, oneshot:true },
-  { id:'opt_inet2',     name:"2ème Internet (autre adresse)",sub:'Remise à vie',   price:-10 },
+  { id:'opt_install_m', name:"Frais d'installation",         sub:'Frais Unique',   price:39 },
+  { id:'opt_raccord',   name:'Frais de Raccordement',        sub:'Si pas de cable dans la maison (Frais d\'installation)', price:99, oneshot:true },
   { id:'opt_booster',   name:'WiFi Booster',                 sub:'Prix / booster', price:3, max:5 },
-  { id:'opt_confort',   name:'WiFi Confort (3B + 4G)',       sub:'Booster Tech',   price:10 },
+  { id:'opt_confort',   name:'Option WiFi Confort',          sub:'3 Booster + Boitier 4G (Prix / mois)', price:10 },
   { id:'opt_sans_mob',  name:'Internet sans mobile',         sub:'Frais mensuel',  price:5 },
   { id:'opt_surf',      name:'Carte Extra Surf Mobile',      sub:'Prix par carte', price:3, max:9 },
 ];
 
 const promos = [
-  { id:'pr_wallonie', name:'<span style="font-size:18px;font-weight:500;font-family:Arial,sans-serif;line-height:1.4;color:#222;">Internet Wallonie</span>', sub:'6 mois',           price:10,  perAbo:false },
+  { id:'pr_wallonie', name:'<span style="font-size:18px;font-weight:500;font-family:Arial,sans-serif;line-height:1.4;color:#222;">Promotion Internet</span>', sub:'6 mois',           price:10,  perAbo:false },
+  { id:'pr_wallonie2', name:'<span style="font-size:18px;font-weight:500;font-family:Arial,sans-serif;line-height:1.4;color:#222;">Promotion 2ème Internet</span>', sub:'Promotion à vie',      price:10,  perAbo:false },
   { id:'pr_fibre',    name:'<span style="font-size:18px;font-weight:500;font-family:Arial,sans-serif;line-height:1.4;color:#222;">Internet Fibre</span>',    sub:'12 mois',          price:15,  perAbo:false },
   { id:'pr_medium',   name:'<span style="font-size:18px;font-weight:500;font-family:Arial,sans-serif;line-height:1.4;color:#222;">Mobile Medium</span>',     sub:'6 mois — par abo', price:5,   perAbo:true, mobileId:'mob_medium' },
-  { id:'pr_install',  name:'<span style="font-size:18px;font-weight:500;font-family:Arial,sans-serif;line-height:1.4;color:#222;">Installation offerte</span>', sub:'1 fois',        price:39,  perAbo:false },
+  { id:'pr_install',  name:'<span style="font-size:18px;font-weight:500;font-family:Arial,sans-serif;line-height:1.4;color:#222;">Installation offerte</span>', sub:'Frais d\'installation', price:39,  perAbo:false },
 ];
 
 const loveRates = {
