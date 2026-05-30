@@ -36,7 +36,7 @@
 <div style="display:flex;gap:8px;justify-content:center;padding:14px 16px;background:#ffffff;flex-wrap:wrap;">
   <a href="https://app.phil-mobile.be/wp_orange.html" style="background:#fff5e6;color:#c95200;border:1px solid #f5c080;padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600;text-decoration:none;">🟠 Simulateur Orange</a>
   <a href="https://app.phil-mobile.be/wp_eneco.html" style="background:#fde8ea;color:#E2001A;border:1px solid #E2001A;padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600;text-decoration:none;">🌿 Simulateur Eneco</a>
-  <a href="https://app.phil-mobile.be/wp_consultant_hub.html" style="background:#1a1612;color:#dd9933;border:1px solid #dd9933;padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600;text-decoration:none;">👥 Espace consultants</a>
+  <a href="#" onclick="demanderCode();return false;" style="background:#1a1612;color:#dd9933;border:1px solid #dd9933;padding:7px 14px;border-radius:20px;font-size:12px;font-weight:600;text-decoration:none;">👥 Espace consultants</a>
 </div>
 
 
@@ -204,9 +204,58 @@
   <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;">
     <a href="#" style="font-size:11px;color:#7a6040;text-decoration:none;">Mentions légales</a>
     <a href="#" style="font-size:11px;color:#7a6040;text-decoration:none;">Confidentialité</a>
-    <a href="https://app.phil-mobile.be/wp_consultant_hub.html" style="font-size:11px;color:#7a6040;text-decoration:none;">Espace consultants</a>
+    <a href="#" onclick="demanderCode();return false;" style="font-size:11px;color:#7a6040;text-decoration:none;">Espace consultants</a>
   </div>
 </div>
 
+
+<!-- MODAL CODE CONSULTANT -->
+<div id="modal-code" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:999;align-items:center;justify-content:center;">
+  <div style="background:#0c1f3d;border:1px solid #dd9933;border-radius:16px;padding:28px 20px;margin:20px;max-width:320px;width:100%;text-align:center;">
+    <div style="font-size:32px;margin-bottom:10px;">🔒</div>
+    <div style="font-size:16px;font-weight:700;color:#e8f0ff;margin-bottom:6px;">Espace Consultants</div>
+    <div style="font-size:12px;color:#8aaedf;margin-bottom:20px;">Entrez votre code d'accès pour continuer.</div>
+    <input id="code-input" type="password" placeholder="Code d'accès..." oninput="resetErreur()"
+      style="width:100%;box-sizing:border-box;padding:12px 14px;border-radius:10px;border:1px solid #1a3060;background:#0a1628;color:#e8f0ff;font-size:14px;text-align:center;outline:none;margin-bottom:8px;">
+    <div id="code-erreur" style="font-size:11px;color:#e05555;min-height:16px;margin-bottom:10px;"></div>
+    <button onclick="validerCode()" style="width:100%;padding:13px;background:#dd9933;color:#0a1628;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:Arial,sans-serif;margin-bottom:10px;">Accéder →</button>
+    <button onclick="fermerModal()" style="width:100%;padding:10px;background:transparent;color:#5a8abf;border:1px solid #1a3060;border-radius:10px;font-size:13px;cursor:pointer;font-family:Arial,sans-serif;">Annuler</button>
+  </div>
+</div>
+
+<script>
+function demanderCode() {
+  document.getElementById('modal-code').style.display = 'flex';
+  document.getElementById('code-input').value = '';
+  document.getElementById('code-erreur').textContent = '';
+  setTimeout(() => document.getElementById('code-input').focus(), 100);
+}
+
+function fermerModal() {
+  document.getElementById('modal-code').style.display = 'none';
+}
+
+function resetErreur() {
+  document.getElementById('code-erreur').textContent = '';
+}
+
+function validerCode() {
+  const val = document.getElementById('code-input').value.trim();
+  if (val.toLowerCase() === 'philmobile2026') {
+    window.location.href = 'https://app.phil-mobile.be/wp_consultant_hub.html';
+  } else {
+    document.getElementById('code-erreur').textContent = '❌ Code incorrect, réessayez.';
+    document.getElementById('code-input').value = '';
+    document.getElementById('code-input').focus();
+  }
+}
+
+// Valider avec Entrée
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && document.getElementById('modal-code').style.display === 'flex') {
+    validerCode();
+  }
+});
+</script>
 </body>
 </html>
